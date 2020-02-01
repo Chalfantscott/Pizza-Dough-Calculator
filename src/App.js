@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      water: '',
+      flour: ''
+    }
+  }
+ 
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    
+    console.log(this.state)
+
+  }
+
+  
+
+
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <h1>Pizza Dough Calculator</h1>
+        </header>
+
+        
+          <form onSubmit={this.handleSubmit}>
+            
+            <p>flour weight:  
+              <input 
+                type="text"
+                placeholder="flour weight"
+                value={this.state.flour} onChange={(e) => this.setState({ flour: e.target.value })}>
+              </input>
+            </p>
+            <p>water:
+              <input 
+                type="text"
+                placeholder="hydration"
+                value={this.state.water} onChange={(e) => this.setState({ water: e.target.value })}>
+                
+              </input>
+            </p>
+          
+            <button >Calculate</button>
+          </form>
+          <p className="results">your dough is hydrated!</p>
+        
+
+      </div>
+    );
+  }
 }
 
 export default App;
